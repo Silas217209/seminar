@@ -255,7 +255,7 @@
     {/if}
 
     <pre><code>accuracy: {accuracy.toFixed(2)}</code></pre>
-    <pre><code>geschwi.: {speed.toFixed(2)}</code></pre>
+    <pre><code>geschwi.: {(speed * 1.9438444924406).toFixed(2)}</code></pre>
     <button on:click={() => getpos()}>Test Accuracy</button>
 
     {#if coords.length > 0}
