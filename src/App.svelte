@@ -10,6 +10,7 @@
     let coordslist = [];
     let id
     let distancelist = [];
+    let fdistancelist = [];
     let timeslist = [];
     let db
     let textinput = ""
@@ -73,15 +74,10 @@
         try {
             lastlat = coordslist[coordslist.length - 2][0]
             lastlon = coordslist[coordslist.length - 2][1]
-            speed = distancelist[distancelist.length - 1] / (timeslist[timeslist.length - 1] / 1000)
-            fspeed = kfspeed.filter(speed)
         } catch (e) {
             lastlat = location.coords.latitude
             lastlat = location.coords.longitude
-            speed = 0
-            fspeed = kfspeed.filter(speed)
         }
-
         coordslist.push([location.coords.latitude, location.coords.longitude]);
         timeslist.push(location.timestamp)
         distancelist = distancelist.concat([
@@ -92,6 +88,21 @@
                 lastlon,
             ),
         ]);
+        fdistancelist = distancelist.concat([
+            kfdistance.filter(getDistance(
+                location.coords.latitude,
+                location.coords.longitude,
+                lastlat,
+                lastlon,
+            ),)
+        ]);
+        try {
+            speed = distancelist[distancelist.length - 1] / (timeslist[timeslist.length - 1] / 1000)
+            fspeed = kfspeed.filter(speed)
+        } catch {
+            speed = 0
+            fspeed = kfspeed.filter(0)
+        }
         let timetolast;
         try {
             timetolast = location.timestamp - timeslist[timeslist.length - 2]
@@ -187,7 +198,7 @@
                 csvContent += "accuracy m; distance m; fdistance m; lat °; long °; speed m/s; fspeed m/s; timestamp; timetolast ms\r\n";
 
                 values.forEach(function (rowmap) {
-                    let row = `${rowmap.accuracy}; ${rowmap.distance}; ${rowmap.fdistance}; ${rowmap.lat}; ${rowmap.long}; ${rowmap.speed}; ${rowmap.fspeed}; ${rowmap.timestamp}; ${rowmap.timetolast}`;
+                    let row = `${rowmap.accuracy.toFixed(2)}; ${rowmap.distance.toFixed(5)}; ${rowmap.fdistance.toFixed(5)}; ${rowmap.lat}; ${rowmap.long}; ${rowmap.speed.toFixed(5)}; ${rowmap.fspeed.toFixed(5)}; ${rowmap.timestamp}; ${rowmap.timetolast}`;
                     csvContent += row + "\r\n";
                 });
                 var encodedUri = encodeURI(csvContent);
@@ -244,7 +255,7 @@
     {/if}
 
     <pre><code>accuracy: {accuracy.toFixed(2)}</code></pre>
-    <pre><code>gescwind: {speed.toFixed(2)}</code></pre>
+    <pre><code>geschwi.: {speed.toFixed(2)}</code></pre>
     <button on:click={() => getpos()}>Test Accuracy</button>
 
     {#if coords.length > 0}
