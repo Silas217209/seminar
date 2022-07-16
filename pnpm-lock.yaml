@@ -3,19 +3,33 @@ lockfileVersion: 5.4
 specifiers:
   '@sveltejs/vite-plugin-svelte': ^1.0.1
   '@tsconfig/svelte': ^3.0.0
+  '@types/leaflet': ^1.7.11
+  '@types/svelte-leafletjs': ^0.8.2
+  kalman.js: ^0.0.2
+  kalmanjs: ^1.1.0
+  leaflet: ^1.8.0
   svelte: ^3.49.0
   svelte-check: ^2.8.0
+  svelte-leafletjs: ^0.9.0
   svelte-preprocess: ^4.10.7
   tslib: ^2.4.0
   typescript: ^4.6.4
   vite: ^3.0.0
   vite-plugin-mkcert: ^1.8.1
 
+dependencies:
+  kalman.js: 0.0.2
+
 devDependencies:
   '@sveltejs/vite-plugin-svelte': 1.0.1_svelte@3.49.0+vite@3.0.0
   '@tsconfig/svelte': 3.0.0
+  '@types/leaflet': 1.7.11
+  '@types/svelte-leafletjs': 0.8.2
+  kalmanjs: 1.1.0
+  leaflet: 1.8.0
   svelte: 3.49.0
   svelte-check: 2.8.0_svelte@3.49.0
+  svelte-leafletjs: 0.9.0
   svelte-preprocess: 4.10.7_uslzfc62di2n2otc2tvfklnwji
   tslib: 2.4.0
   typescript: 4.7.4
@@ -212,18 +226,59 @@ packages:
     resolution: {integrity: sha512-pYrtLtOwku/7r1i9AMONsJMVYAtk3hzOfiGNekhtq5tYBGA7unMve8RvUclKLMT3PrihvJqUmzsRGh0RP84hKg==}
     dev: true
 
+  /@types/geojson/7946.0.10:
+    resolution: {integrity: sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA==}
+    dev: true
+
+  /@types/leaflet/1.7.11:
+    resolution: {integrity: sha512-VwAYom2pfIAf/pLj1VR5aLltd4tOtHyvfaJlNYCoejzP2nu52PrMi1ehsLRMUS+bgafmIIKBV1cMfKeS+uJ0Vg==}
+    dependencies:
+      '@types/geojson': 7946.0.10
+    dev: true
+
   /@types/node/18.0.4:
     resolution: {integrity: sha512-M0+G6V0Y4YV8cqzHssZpaNCqvYwlCiulmm0PwpNLF55r/+cT8Ol42CHRU1SEaYFH2rTwiiE1aYg/2g2rrtGdPA==}
+    dev: true
+
+  /@types/prop-types/15.7.5:
+    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
   /@types/pug/2.0.6:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}
     dev: true
 
+  /@types/react-leaflet/2.8.2:
+    resolution: {integrity: sha512-Iel8Vd1bSCD38Yhiqcmm/+9hjPEdd39LFE3tBMbOytq3QAQsC3LDrbo6ifoh8JbpqPbCsQPo9Wx5OELHixEShg==}
+    dependencies:
+      '@types/leaflet': 1.7.11
+      '@types/react': 18.0.15
+    dev: true
+
+  /@types/react/18.0.15:
+    resolution: {integrity: sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.1.0
+    dev: true
+
   /@types/sass/1.43.1:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
       '@types/node': 18.0.4
+    dev: true
+
+  /@types/scheduler/0.16.2:
+    resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+    dev: true
+
+  /@types/svelte-leafletjs/0.8.2:
+    resolution: {integrity: sha512-hodJIZX3E829B6D6VLJtCteLqATpQgx2b0fuPprpeLjomb0QB6tFEQLIUPRTn2d8Do5W7rs9LZwz3GjqbgeR2w==}
+    dependencies:
+      '@types/leaflet': 1.7.11
+      '@types/react-leaflet': 2.8.2
+      svelte: 3.49.0
     dev: true
 
   /anymatch/3.1.2:
@@ -236,6 +291,14 @@ packages:
 
   /axios/0.21.4_debug@4.3.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+    dependencies:
+      follow-redirects: 1.15.1_debug@4.3.4
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
+  /axios/0.25.0:
+    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
       follow-redirects: 1.15.1_debug@4.3.4
     transitivePeerDependencies:
@@ -293,8 +356,16 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /complex.js/2.0.4:
+    resolution: {integrity: sha512-Syl95HpxUTS0QjwNxencZsKukgh1zdS9uXeXX2Us0pHaqBR6kiZZi0AkZ9VpZFwHJyVIUVzI4EumjWdXP3fy6w==}
+    dev: false
+
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    dev: true
+
+  /csstype/3.1.0:
+    resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
     dev: true
 
   /debug/4.3.4:
@@ -308,6 +379,10 @@ packages:
     dependencies:
       ms: 2.1.2
     dev: true
+
+  /decimal.js/9.0.1:
+    resolution: {integrity: sha512-2h0iKbJwnImBk4TGk7CG1xadoA0g3LDPlQhQzbZ221zvG0p2YVUedbKIPsOZXKZGx6YmZMJKYOalpCMxSdDqTQ==}
+    dev: false
 
   /deepmerge/4.2.2:
     resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}
@@ -535,6 +610,10 @@ packages:
       esbuild-windows-arm64: 0.14.49
     dev: true
 
+  /escape-latex/1.2.0:
+    resolution: {integrity: sha512-nV5aVWW1K0wEiUIEdZ4erkGGH8mDxGyxSeqPzRNtWP7ataw+/olFObw7hujFWlVjNsaDFw5VZ5NzVSIqRgfTiw==}
+    dev: false
+
   /estree-walker/2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
     dev: true
@@ -574,6 +653,10 @@ packages:
     dependencies:
       debug: 4.3.4
     dev: true
+
+  /fraction.js/4.0.4:
+    resolution: {integrity: sha512-aK/oGatyYLTtXRHjfEsytX5fieeR5H4s8sLorzcT12taFS+dbMZejnvm9gRa8mZAPwci24ucjq9epDyaq5u8Iw==}
+    dev: false
 
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
@@ -674,9 +757,27 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /javascript-natural-sort/0.7.1:
+    resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
+    dev: false
+
+  /kalman.js/0.0.2:
+    resolution: {integrity: sha512-JmxO59SqSpKWgXk8wVPhABTOA6L/asAUv50IVLDvhcjyN9m+5ugh+siki/TZvL7nSnHvsZJOkng1eCsQKwtwzw==}
+    dependencies:
+      mathjs: 3.20.2
+    dev: false
+
+  /kalmanjs/1.1.0:
+    resolution: {integrity: sha512-Gkm2DAKIX8geuDcEJ92e80EmQ6TyIzWBJk6AFk+aDLofQ4G/KoDe1RCY9WMuXFe0NQxsTi7HYh9BVQneOtlvkg==}
+    dev: true
+
   /kleur/4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
+    dev: true
+
+  /leaflet/1.8.0:
+    resolution: {integrity: sha512-gwhMjFCQiYs3x/Sf+d49f10ERXaEFCPr+nVTryhAW8DWbMGqJqt9G4XuIaHmFW08zYvhgdzqXGr8AlW8v8dQkA==}
     dev: true
 
   /magic-string/0.25.9:
@@ -691,6 +792,21 @@ packages:
     dependencies:
       sourcemap-codec: 1.4.8
     dev: true
+
+  /mathjs/3.20.2:
+    resolution: {integrity: sha512-3f6/+uf1cUtIz1rYFz775wekl/UEDSQ3mU6xdxW7qzpvvhc2v28i3UtLsGTRB+u8OqDWoSX6Dz8gehaGFs6tCA==}
+    engines: {node: '>= 0.1'}
+    hasBin: true
+    dependencies:
+      complex.js: 2.0.4
+      decimal.js: 9.0.1
+      escape-latex: 1.2.0
+      fraction.js: 4.0.4
+      javascript-natural-sort: 0.7.1
+      seed-random: 2.2.0
+      tiny-emitter: 2.0.2
+      typed-function: 0.10.7
+    dev: false
 
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -866,6 +982,10 @@ packages:
       rimraf: 2.7.1
     dev: true
 
+  /seed-random/2.2.0:
+    resolution: {integrity: sha512-34EQV6AAHQGhoc0tn/96a9Fsi6v2xdqe/dMUwljGRaFOzR3EgRmECvD0O8vi8X+/uQ50LGHfkNu/Eue5TPKZkQ==}
+    dev: false
+
   /sorcery/0.10.0:
     resolution: {integrity: sha512-R5ocFmKZQFfSTstfOtHjJuAwbpGyf9qjQa1egyhvXSbM7emjrtLXtGdZsDJDABC85YBfVvrOiGWKSYXPKdvP1g==}
     hasBin: true
@@ -934,6 +1054,15 @@ packages:
       svelte: 3.49.0
     dev: true
 
+  /svelte-leafletjs/0.9.0:
+    resolution: {integrity: sha512-jJm/RTRjBfas9ofQ2906hOtYDDXaLef05t8QU/SIE57DPEvpcYNE2WoHkcw4695DLD5XoLfsR4w+1/EOTItayw==}
+    dependencies:
+      axios: 0.25.0
+      leaflet: 1.8.0
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
   /svelte-preprocess/4.10.7_uslzfc62di2n2otc2tvfklnwji:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
@@ -990,6 +1119,10 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
+  /tiny-emitter/2.0.2:
+    resolution: {integrity: sha512-2NM0auVBGft5tee/OxP4PI3d8WItkDM+fPnaRAVo6xTDI2knbz9eC5ArWGqtGlYqiH3RU5yMpdyTTO7MguC4ow==}
+    dev: false
+
   /to-regex-range/5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -1004,6 +1137,11 @@ packages:
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: true
+
+  /typed-function/0.10.7:
+    resolution: {integrity: sha512-3mlZ5AwRMbLvUKkc8a1TI4RUJUS2H27pmD5q0lHRObgsoWzhDAX01yg82kwSP1FUw922/4Y9ZliIEh0qJZcz+g==}
+    engines: {node: '>= 0.10'}
+    dev: false
 
   /typescript/4.7.4:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
