@@ -43,7 +43,6 @@
         };
 
 
-
     ///////////////////   position capture   ///////////////////
 
         // one time manual requested position
@@ -146,7 +145,6 @@
         };
 
 
-
     ///////////////////   data saving and organising   ///////////////////
 
         // add header to indexed db to identify different tracks
@@ -220,6 +218,7 @@
             }
         }
 
+        
     ///////////////////   post processing and visualisation   ///////////////////
 
         // calculating the speed, only for quick checking
