@@ -1,10 +1,29 @@
-<script lang="ts">
+<!-- MIT License
 
+Copyright (c) 2022 Silas Pachali
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. -->
+<script lang="ts">
     ///////////////////   Initialisation   ///////////////////
         import KalmanFilter from 'kalmanjs'
         import LeafletMap from "./lib/LeafletMap.svelte";
         import LeafletPolyline from "./lib/LeafletPolyline.svelte";
-
 
         let coords = []
         let speed = 0
@@ -22,8 +41,7 @@
         let iswatching = false
         let lat: number
         let long: number
-        
-
+    
     ///////////////////   storage Initialisation   ///////////////////
 
         // opening indexed db version 4 for location storage
@@ -41,7 +59,6 @@
             var db = request.result
             db.createObjectStore("data", {keyPath: "id", autoIncrement: true})
         };
-
 
     ///////////////////   position capture   ///////////////////
 
@@ -76,7 +93,6 @@
                 navigator.geolocation.clearWatch(id)
                 iswatching = false
             }
-
         };
         
         // getting data on success storing for postprocessing
@@ -144,7 +160,6 @@
             console.log(error);
         };
 
-
     ///////////////////   data saving and organising   ///////////////////
 
         // add header to indexed db to identify different tracks
@@ -188,7 +203,6 @@
             const txn = db.transaction('data', 'readonly');
             const store = txn.objectStore('data');
             let values = [];
-
             let query = store.getAll();
 
             query.onsuccess = (event) => {
@@ -212,12 +226,10 @@
                     link.click();
                 }
             };
-
-            query.onerror = (event: { target: { errorCode: any; }; }) => {
+             query.onerror = (event: { target: { errorCode: any; }; }) => {
                 console.log(event.target.errorCode);
             }
         }
-
         
     ///////////////////   post processing and visualisation   ///////////////////
 
@@ -242,12 +254,10 @@
 
         // creates data to show leaflet map on phone for checking
         function showmap() {
-
             const txn = db.transaction('data', 'readonly');
             const store = txn.objectStore('data');
             let values = [];
             let coordsindex = -1
-
             let query = store.getAll();
 
             query.onsuccess = (event) => {
@@ -266,11 +276,8 @@
                 }
                 coords = coords
             };
-
-
         }
 </script>
-
 <main>
     <input bind:value={textinput} type="text" name="text" id="text">
     <button on:click={() => watchposition()}>{!iswatching ? "Watch position" : "Stop watching"}</button>
@@ -286,6 +293,4 @@
     {#if coords.length > 0}
         <LeafletMap><LeafletPolyline latlongs={coords}/></LeafletMap>
     {/if}
-
 </main>
-
